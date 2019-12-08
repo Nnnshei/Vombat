@@ -36,16 +36,16 @@ class MainActivity : AppCompatActivity() {
             videoView.start()
         }
         btnClicker.setOnClickListener{
-
+            startActivity(Intent(this,ClickerActivity::class.java))
         }
         btnBrowser.setOnClickListener{
-
+            startActivity(Intent(this,BrowserActivity::class.java))
         }
         btnJopa.setOnClickListener{
-
+            startActivity(Intent(this,MediaActivity::class.java))
         }
         btnTest.setOnClickListener{
-
+            startActivity(Intent(this,TestActivity::class.java))
         }
     }
 
@@ -83,15 +83,6 @@ class MainActivity : AppCompatActivity() {
         return returnString
     }
 
-    fun switchClicker(view: View) {
-        when (view.id) {
-            R.id.btnBrowser -> startActivity(Intent(this, BrowserActivity::class.java))
-            R.id.btnClicker -> startActivity(Intent(this, ClickerActivity::class.java))
-            R.id.btnJopa -> Toast.makeText(this, "Ещё не готово", Toast.LENGTH_LONG).show()
-            R.id.btnTest -> startActivity(Intent(this, TestActivity::class.java))
-        }
-    }
-
     override fun onResume() {
         super.onResume()
         videoView.start()
@@ -108,99 +99,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-
-
-/*package com.example.vombat
-
-import android.content.Context
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_clicker.*
-import kotlinx.android.synthetic.main.activity_main.*
-
-class ClickerActivity : AppCompatActivity() {
-
-
-    private lateinit var pref: SharedPreferences
-    private val APP_PREFERENCES = "mydata"
-    private val APP_PREFERENCES_COUNTER = "counter"
-    private val APP_PREFERENCES_COIN = "coin"
-    var counter: Int = 0
-    var coin: Int = 0
-    var i: Int = 0
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_clicker)
-        pref = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
-        showTextCounter.text = "Ты нажал на кнопку ${counter} раз"
-        textCoin.text = "У тебя ${coin} монет"
-        if (counter >= 100 && counter < 250)
-            buttonCount.setImageResource(R.drawable.image1)
-        if (counter >= 250)
-            buttonCount.setImageResource(R.drawable.image2)
-    }
-
-    fun clickCounter(view: View) {
-        counter++
-        coin++
-        showTextCounter.text = "Ты нажа на кнопку ${counter} раз"
-        textCoin.text = "У тебя ${coin} монет"
-        if (counter >= 100 && counter < 250)
-            buttonCount.setImageResource(R.drawable.image1)
-        if (counter >= 250)
-            buttonCount.setImageResource(R.drawable.image2)
-    }
-
-    fun abuseCoin(view: View) {
-        i++
-        if (i == 1)
-            coin += 100
-        textCoin.text = "У тебя ${coin} монет"
-        if (i == 2)
-            coin += 1000
-        textCoin.text = "У тебя ${coin} монет"
-        if (i == 3)
-            coin += 10000
-        textCoin.text = "У тебя ${coin} монет"
-        if (i == 4)
-            coin += 10000
-        textCoin.text = "У тебя ${coin} монет"
-        if (i > 4) {
-            i = 1
-            coin -= 111100
-            textCoin.text = "У тебя ${coin} монет"
-
-            Toast.makeText(
-                this,
-                "Отложив в скорби о том, чего у вас нет, научимся воздавать благодарность за то, что есть.",
-                Toast.LENGTH_LONG
-            ).show()
-        }
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        val editor = pref.edit()
-        editor.putInt(APP_PREFERENCES_COIN, coin)
-        editor.apply()
-        editor.putInt(APP_PREFERENCES_COUNTER, counter)
-        editor.apply()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (pref.contains(APP_PREFERENCES_COIN))
-            coin = pref.getInt(APP_PREFERENCES_COIN, 0)
-        textCoin.text = "У тебя ${coin} монет"
-
-        if (pref.contains(APP_PREFERENCES_COUNTER))
-            counter = pref.getInt(APP_PREFERENCES_COUNTER, 0)
-        showTextCounter.text = "Ты нажал на кнопку ${counter} раз"
-    }
-}
-*/
