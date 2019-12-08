@@ -8,7 +8,7 @@ import android.os.Bundle
 import com.example.vombat.R
 import kotlinx.android.synthetic.main.activity_clicker.*
 
-class ClickerActivity : AppCompatActivity() {
+class ClickerActivity : AppCompatActivity(), ClickerView {
 
     private lateinit var pref: SharedPreferences
     private val APP_PREFENCES = "mydata"
@@ -31,19 +31,19 @@ class ClickerActivity : AppCompatActivity() {
         }
     }
 
-    fun showTextCounter() {
+    override fun showTextCounter() {
         textCounter.text = "Ты нажал на кнопку ${counter} раз"
         textCoin.text = "У тебя ${coin} монет"
     }
 
-    fun onClickCounter() {
+    override fun onClickCounter() {
         counter++
         coin++
         showTextCounter()
-        picButton()
+        setButtonPic()
     }
 
-    fun picButton() {
+    override fun setButtonPic() {
 /*        when (counter) {
             100 -> btnCount.setImageResource(R.drawable.image1)
             200 -> btnCount.setImageResource(R.drawable.image2)
@@ -57,10 +57,10 @@ class ClickerActivity : AppCompatActivity() {
         else btnCount.setImageResource(R.drawable.button_count)*/
     }
 
-    fun abuseCoin() {
+    override fun abuseCoin() {
         counter = 0
         showTextCounter()
-        picButton()
+        setButtonPic()
         /* i++
          if (i == 1)
              coin += 100
@@ -103,6 +103,6 @@ class ClickerActivity : AppCompatActivity() {
         if (pref.contains(APP_PREFERENCES_COUNTER))
             counter = pref.getInt(APP_PREFERENCES_COUNTER, 0)
         showTextCounter()
-        picButton()
+        setButtonPic()
     }
 }
