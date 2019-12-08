@@ -1,14 +1,13 @@
-package com.example.vombat
+package com.example.vombat.ui.media
 
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.vombat.R
 import kotlinx.android.synthetic.main.activity_main.videoView
 import kotlinx.android.synthetic.main.activity_media.*
-import java.net.URI
 
 class MediaActivity : AppCompatActivity() {
 

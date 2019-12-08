@@ -1,18 +1,16 @@
-package com.example.vombat
+package com.example.vombat.ui.main
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.View
-import android.widget.Button
-import android.widget.MediaController
-import android.widget.Toast
-import androidx.core.net.toFile
+import com.example.vombat.ui.browser.BrowserActivity
+import com.example.vombat.ui.clicker.ClickerActivity
+import com.example.vombat.ui.media.MediaActivity
+import com.example.vombat.R
+import com.example.vombat.ui.test.TestActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -36,16 +34,16 @@ class MainActivity : AppCompatActivity() {
             videoView.start()
         }
         btnClicker.setOnClickListener{
-            startActivity(Intent(this,ClickerActivity::class.java))
+            startActivity(Intent(this, ClickerActivity::class.java))
         }
         btnBrowser.setOnClickListener{
-            startActivity(Intent(this,BrowserActivity::class.java))
+            startActivity(Intent(this, BrowserActivity::class.java))
         }
         btnJopa.setOnClickListener{
-            startActivity(Intent(this,MediaActivity::class.java))
+            startActivity(Intent(this, MediaActivity::class.java))
         }
         btnTest.setOnClickListener{
-            startActivity(Intent(this,TestActivity::class.java))
+            startActivity(Intent(this, TestActivity::class.java))
         }
     }
 

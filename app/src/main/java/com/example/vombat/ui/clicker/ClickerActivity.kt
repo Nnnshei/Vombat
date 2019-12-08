@@ -1,10 +1,11 @@
-package com.example.vombat
+package com.example.vombat.ui.clicker
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.vombat.R
 import kotlinx.android.synthetic.main.activity_clicker.*
 
 class ClickerActivity : AppCompatActivity() {
