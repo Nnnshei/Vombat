@@ -3,8 +3,6 @@ package com.example.vombat
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
-import android.media.AudioManager
-import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_clicker.*
@@ -25,25 +23,23 @@ class ClickerActivity : AppCompatActivity() {
         requestedOrientation = (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
         pref = getSharedPreferences(APP_PREFENCES, Context.MODE_PRIVATE)
         btnCount.setOnClickListener {
-            clickCounter()
+            onClickCounter()
         }
         abuseCoin.setOnClickListener {
             abuseCoin()
         }
     }
 
-    fun textCounter() {
+    fun showTextCounter() {
         textCounter.text = "Ты нажал на кнопку ${counter} раз"
         textCoin.text = "У тебя ${coin} монет"
     }
 
-    fun clickCounter() {
+    fun onClickCounter() {
         counter++
         coin++
-        textCounter()
+        showTextCounter()
         picButton()
-/*        textCounter.text = "Ты нажал на кнопку ${counter++} раз"
-        textCoin.text = "У тебя ${coin++} монет"*/
     }
 
     fun picButton() {
@@ -52,17 +48,17 @@ class ClickerActivity : AppCompatActivity() {
             200 -> btnCount.setImageResource(R.drawable.image2)
         }*/
 
-        if (counter >= 15) {
+        /*if (counter >= 15) {
             btnCount.setImageResource(R.drawable.image1)
             if (counter >= 25)
                 btnCount.setImageResource(R.drawable.image2)
         }
-        else btnCount.setImageResource(R.drawable.button_count)
+        else btnCount.setImageResource(R.drawable.button_count)*/
     }
 
     fun abuseCoin() {
         counter = 0
-        textCounter()
+        showTextCounter()
         picButton()
         /* i++
          if (i == 1)
@@ -102,12 +98,10 @@ class ClickerActivity : AppCompatActivity() {
         super.onResume()
         if (pref.contains(APPP_PREFERENCES_COIN))
             coin = pref.getInt(APPP_PREFERENCES_COIN, 0)
-//        textCoin.text = "У тебя ${coin} монет"
 
         if (pref.contains(APP_PREFERENCES_COUNTER))
             counter = pref.getInt(APP_PREFERENCES_COUNTER, 0)
-//        textCounter.text = "Ты нажал на кнопку ${counter} раз"
-        textCounter()
+        showTextCounter()
         picButton()
     }
 }

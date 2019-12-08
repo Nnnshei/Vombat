@@ -27,9 +27,6 @@ class MainActivity : AppCompatActivity() {
         videoView.setVideoURI(Uri.parse("https://2ch.hk/b/src/208059827/15745430231050.mp4"))
         //videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() +"/"+R.raw.video_test))
         // videoView.setMediaController(MediaController(this))
-        btnVideo.setOnClickListener {
-            chooseVideoFromGallery()
-        }
         videoView.pause()
         videoView.seekTo(1)
         videoView.setOnClickListener{
@@ -37,6 +34,18 @@ class MainActivity : AppCompatActivity() {
         }
         videoView.setOnCompletionListener {
             videoView.start()
+        }
+        btnClicker.setOnClickListener{
+
+        }
+        btnBrowser.setOnClickListener{
+
+        }
+        btnJopa.setOnClickListener{
+
+        }
+        btnTest.setOnClickListener{
+
         }
     }
 
@@ -127,7 +136,7 @@ class ClickerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clicker)
         pref = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
-        textCounter.text = "Ты нажал на кнопку ${counter} раз"
+        showTextCounter.text = "Ты нажал на кнопку ${counter} раз"
         textCoin.text = "У тебя ${coin} монет"
         if (counter >= 100 && counter < 250)
             buttonCount.setImageResource(R.drawable.image1)
@@ -138,7 +147,7 @@ class ClickerActivity : AppCompatActivity() {
     fun clickCounter(view: View) {
         counter++
         coin++
-        textCounter.text = "Ты нажа на кнопку ${counter} раз"
+        showTextCounter.text = "Ты нажа на кнопку ${counter} раз"
         textCoin.text = "У тебя ${coin} монет"
         if (counter >= 100 && counter < 250)
             buttonCount.setImageResource(R.drawable.image1)
@@ -191,7 +200,7 @@ class ClickerActivity : AppCompatActivity() {
 
         if (pref.contains(APP_PREFERENCES_COUNTER))
             counter = pref.getInt(APP_PREFERENCES_COUNTER, 0)
-        textCounter.text = "Ты нажал на кнопку ${counter} раз"
+        showTextCounter.text = "Ты нажал на кнопку ${counter} раз"
     }
 }
 */
