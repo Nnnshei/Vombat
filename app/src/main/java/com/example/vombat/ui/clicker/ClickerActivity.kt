@@ -12,9 +12,8 @@ import kotlinx.android.synthetic.main.activity_clicker.*
 
 class ClickerActivity : AppCompatActivity(), ClickerView {
 
-    private val APP_PREFENCES = "mydata"
-
     private val model by lazy {
+        val APP_PREFENCES = "mydata"
         ClickerModelImpl(getSharedPreferences(APP_PREFENCES, Context.MODE_PRIVATE))
     }
 
@@ -36,8 +35,8 @@ class ClickerActivity : AppCompatActivity(), ClickerView {
     }
 
     override fun showTextCounter(counter: Int, coins: Int) {
-        textCounter.text = "Ты нажал на кнопку ${counter} раз"
-        textCoin.text = "У тебя ${coins} монет"
+        textCounter.text = getString(R.string.counter_text, counter)
+        textCoin.text = getString(R.string.coins_text, coins)
     }
 
     override fun setButtonPic(resource: Int) {
