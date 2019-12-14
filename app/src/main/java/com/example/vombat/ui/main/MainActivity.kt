@@ -40,7 +40,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
+    private fun <T : AppCompatActivity> createAndStart(clazz: Class<T>) {
+        startActivity(Intent(this, clazz))
+    }
 
     override fun onResume() {
         super.onResume()
