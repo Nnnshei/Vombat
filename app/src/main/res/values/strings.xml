@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Vombat</string>
+    <string name="app_name" translatable="false">Vombat</string>
+    <string name="counter_text">Ты нажал на кнопку %d раз</string>
+    <string name="coins_text">У тебя %d монет</string>
 </resources>
