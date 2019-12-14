@@ -17,6 +17,11 @@ class MediaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_media)
         videoView.setVideoURI(Uri.parse("https://2ch.hk/b/src/208059827/15745430231050.mp4"))
+//        videoView.seekTo(1)
+        videoView.start()
+        videoView.setOnCompletionListener {
+            videoView.start()
+        }
         btnVideo.setOnClickListener {
             chooseVideoFromGallery()
         }
@@ -27,7 +32,7 @@ class MediaActivity : AppCompatActivity() {
         Intent.ACTION_PICK,
         MediaStore.Video.Media.EXTERNAL_CONTENT_URI
         )
-        galleryIntent.type = ("vide/*")
+        galleryIntent.type = ("video/*")
         startActivityForResult(galleryIntent, GALLERY_REQUEST)
     }
 

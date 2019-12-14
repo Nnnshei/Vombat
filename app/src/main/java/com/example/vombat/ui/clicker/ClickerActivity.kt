@@ -29,6 +29,7 @@ class ClickerActivity : AppCompatActivity(), ClickerView {
 
         btnCount.setOnClickListener {
             presenter.onClickCounter()
+            presenter.refreshUiState()
         }
         abuseCoin.setOnClickListener {
             presenter.onAbuseCoin()

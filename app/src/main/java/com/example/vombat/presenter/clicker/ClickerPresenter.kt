@@ -17,7 +17,6 @@ class ClickerPresenter(private val view: ClickerView, private val model: Clicker
     fun onClickCounter() {
         counter++
         coins++
-        refreshUiState()
     }
 
     fun refreshUiState() {

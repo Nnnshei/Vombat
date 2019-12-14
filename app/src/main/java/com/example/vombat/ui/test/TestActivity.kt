@@ -1,29 +1,31 @@
 package com.example.vombat.ui.test
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.vombat.R
+import com.example.vombat.presenter.test.TestPresenter
 import kotlinx.android.synthetic.main.activity_test.*
 
-class TestActivity : AppCompatActivity() {
+class TestActivity : AppCompatActivity(), TestView {
 
-    // val GALLERY_REQUEST: Int = 1
-    lateinit var colorBkgrnd: String
+    private val txtColor = textColor.text.toString()
+
+    private val presenter by lazy {
+        TestPresenter(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
         btnColor.setOnClickListener{
-            switchColor()
+            presenter.colorSwitch(textColor.text.toString())
         }
     }
 
-    fun switchColor() {
-        colorBkgrnd = textColor.text.toString()
-        Toast.makeText(this, "Jopa", Toast.LENGTH_LONG).show()
-//        view.setBackgroundColor(Color.parseColor(colorBkgrnd))
-        testLayout.setBackgroundColor(Color.parseColor(colorBkgrnd))
+    override fun setBackgroundColor() {
+        Toast.makeText(this,
+            presenter.colorSwitch(textColor.text.toString()),
+            Toast.LENGTH_LONG).show()
     }
 }
